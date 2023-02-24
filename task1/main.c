@@ -2,13 +2,11 @@
 #define _USE_MATH_DEFINES
 #define N 10000000
 
-
 #include <stdio.h>
 #include <math.h>
 #include <stdlib.h>
 #include <malloc.h>
 #include <time.h>
-
 
 void FillArray_double(double* my_array, int len) {
 	double step = (M_PI * 2) / 10000000.0;
@@ -23,7 +21,7 @@ void FillArray_float(float* my_array, int len) {
 	double sin_arg = 0;
 
 	for (int i = 0; i < len; i++) {
-		my_array[i] = sin(step * i);
+		my_array[i] = sinf(step * i);
 	}
 }
 
@@ -34,7 +32,6 @@ double ArraySum_double(double* input_arr, int len) {
 	}
 	return sum;
 }
-
 float ArraySum_float(float* input_arr, int len) {
 	float sum = 0.0;
 	for (int i = 0; i < len; i++) {
@@ -75,5 +72,7 @@ int main() {
 
 	prog_end = clock();
 	printf("Total time: %f sec \n", ((double)(prog_end - prog_begin) / CLOCKS_PER_SEC));
+	free(array);
+	free(fl_array);
 	return 0;
 }
